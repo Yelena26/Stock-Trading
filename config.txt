@@ -1,0 +1,12 @@
+[ANALYSIS]
+quotes = AAPL,AMZN,BAC,FB,GOOGL,MSFT,RCL,TSLA,UAL,USO,VOO
+
+[TIME]
+trade_interval = 20
+mode = retrospect
+
+[ALPHA VANTAGE]
+key = YOUR_KEY_HERE
+
+[IEX CLOUD]
+token = YOUR_TOKEN_HERE
