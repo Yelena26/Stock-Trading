@@ -18,7 +18,12 @@ import Oracle
 from Oracle import Oracle
 import time
 from IEXCloud import IEXCloud
+from datetime import datetime
 
+
+def get_current_time_seconds():
+    time_components = datetime.now().strftime("%H:%M:%S").split(':')
+    return int(time_components[0]) * 3600 + int(time_components[1]) * 60 + int(time_components[2])
 
 def main():
     config = configparser.ConfigParser()
@@ -35,9 +40,9 @@ def main():
 
     elif mode == "live":
         portfolio_value = []
-        broker = Simulator(10000, {'AAPL': 20})
-        oracle = Oracle()
-        current_time_seconds = Oracle.get_current_time_seconds()
+        broker = Simulator(10000)
+        oracle = Oracle(quotes[0])
+        current_time_seconds = get_current_time_seconds()
 
         # Market hours: 6:30 PST (9:30 EST) to 13:00 PST (16:00 EST)
         while 23400 < current_time_seconds < 46800:
